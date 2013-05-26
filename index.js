@@ -11,6 +11,7 @@ url = url.replace('{{book}}', params.book);
 url = url.replace('{{citation}}', params.citation);
 
 $.getJSON(url).done(function(data){
-  console.log(data);
-  $('#citations').text(data);
+  citation = data[1][params.book]
+  console.log(citation);
+  $('#citations').text(citation);
 });
