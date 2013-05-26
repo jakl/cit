@@ -1,30 +1,35 @@
 $(function(){
   function Citation(citation){
-    this.book = parseInt(citation.charAt(0)) ? 'science_health' : 'bible';
-    this.citation = citation;
-
-    url = "http://cskit-server.herokuapp.com/v1/lesson/text.json?callback=?&"
-    + "payload=[%7B%22section%22:1,%22readings%22:"
-    + "%7B%22{{book}}%22:[%22{{citation}}%22]%7D%7D]";
-
-    url = url.replace('{{book}}', citation.book);
-    url = url.replace('{{citation}}', citation.citation);
-
-    $.ajaxSetup({ async: false });
-    this.text = $.getJSON(url);
-    $.ajaxSetup({ async: true });
+    that = this;
+    this.ready = function(cb){
+      $.getJSON(
+        that.url = "http://cskit-server.herokuapp.com/v1/text.json?"
+        + "callback=?&citations=" + citation
+      )
+      .done(function(data){
+        citation = data[0];
+        that.volume = citation.volume;
+        that.citation = citation.citation;
+        that.text = citation.text;
+        cb();
+      })
+      .fail(function(jqxhr, status, error){ //Why isn't this working!!!!
+        that.volume = status + " : " + error;
+      });
+    };
   }
 
-  $('#citations').change(function(){
-    citation = new Citation($('#citations').text());
-    console.log("Set book to " + citation.book + " and citation to " + citation.citation);
+  function reload_citation(){
+    citation = new Citation($('#citations').val());
+    citation.ready(function(){
+      $('#citation_volume').text(citation.volume);
+      $('#citation_citation').text(citation.citation);
+      $('#citation_text').text(citation.text);
+      $('#citation_url').text(citation.url);
+    });
+  }
 
-    lookup_citation(citation,
-      function(text){
-        citation = data[1][citation.book]
-        console.log(citation.text);
-        $('#text').text(citation.text);
-      }
-    );
-  });
+  $('#citations').change(reload_citation);
+  $('#citations').keyup(reload_citation);
+  reload_citation();
 });

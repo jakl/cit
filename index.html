@@ -2,18 +2,44 @@
 <meta charset="utf-8">
 <head>
   <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+  <link href="index.css" rel="stylesheet">
 </head>
 <body>
   <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-  <script src="http://code.jquery.com/jquery-2.0.1.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="index.js"></script>
 
-  <div class="row-fluid">
-    <div class="span6">
-      <input type="text" id="citations"></textarea>
+  <div class="navbar navbar-inverse">
+    <div class="navbar-inner">
+      <div class="container">
+        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="brand" href="#">Cskit Jsonp</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
     </div>
-    <div class="span6">
-      <h1 id="text"></div>
-    </div>
+  </div>
+  <div class="container well">
+    <input type="text" id="citations" value="bible_kjv Gen. 12:1-3 the (to :)">
+    <hr>
+    <dl>
+      <dt>Volume</dt>
+      <dd id="citation_volume">Waiting...</dd>
+      <dt>Citation</dt>
+      <dd id="citation_citation">Waiting...</dd>
+      <dt>Text</dt>
+      <dd id="citation_text">Waiting...</dd>
+      <dt>URL</dt>
+      <dd id="citation_url">Waiting...</dd>
+    </dl>
   </div>
 </body>
