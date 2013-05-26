@@ -17,6 +17,8 @@ $(function(){
 
   $('#citations').change(function(){
     citation = new Citation($('#citations').text());
+    console.log("Set book to " + citation.book + " and citation to " + citation.citation);
+
     lookup_citation(citation,
       function(text){
         citation = data[1][citation.book]
