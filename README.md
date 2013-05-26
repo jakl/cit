@@ -1,8 +1,8 @@
 Hackathon
 =========
 
-(Live Demo)[http://jakl.github.com/cit]
+[Live Demo of This Code](http://jakl.github.com/cit)
 
-(Wordpress Colaberation)[http://pleasantviewer.org]
+[Wordpress Colaberation Demo](http://pleasantviewer.org)
 
-(API)[https://github.com/camertron/cskit-rb#file-format]
+[API](https://github.com/camertron/cskit-rb#file-format)
