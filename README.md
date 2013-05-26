@@ -1,3 +1,8 @@
 Hackathon
 =========
-![Hack](http://s17.postimg.org/eq1udckoe/5x7_postcard_back_01b_highrez.jpg)
+
+(Live Demo)[http://jakl.github.com/cit]
+
+(Wordpress Colaberation)[http://pleasantviewer.org]
+
+(API)[https://github.com/camertron/cskit-rb#file-format]
