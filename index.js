@@ -8,7 +8,7 @@ url += "payload=[%7B%22section%22:1,%22readings%22:%7B%22{{book}}%22:[%22{{citat
 
 //Use mustache here once it works...
 url = url.replace('{{book}}', params.book);
-url.replace('{{citation}}', params.citation);
+url = url.replace('{{citation}}', params.citation);
 
 $.getJSON(url).done(function(data){
   console.log(data);
