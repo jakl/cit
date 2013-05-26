@@ -1,6 +1,6 @@
 $(function(){
   function Citation(citation){
-    this.book = parseInt(text.charAt(0)) ? 'science_health' : 'bible';
+    this.book = parseInt(citation.charAt(0)) ? 'science_health' : 'bible';
     this.citation = citation;
 
     url = "http://cskit-server.herokuapp.com/v1/lesson/text.json?callback=?&"
