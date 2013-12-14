@@ -11,7 +11,7 @@ $j(function(){
       else if (book == "YLT") {api_string = 'yltbible ' + citation}
       else if (book == "SH") {api_string = 'science_health ' + citation}
       else {api_string = 'bible ' + citation_string; book = "KJV"; citation = citation_string;}
-      }
+    }
     else {
       api_string = 'science_health ' + citation_string;
       book = "S&H";
@@ -43,19 +43,23 @@ $j(function(){
     };
   }
 
+  function set_url(){
+    document.location.hash = LZString.compress($j('#citations').val())
+  }
+
   function current_line(){
     return $j('#citations').val().substr(0, $j('#citations')[0].selectionStart).split("\n").length - 1;
   }
   function format_citation(ct) {
-      var re = new RegExp(/_.[^_]+_/g);
+    var re = new RegExp(/_.[^_]+_/g);
 
-      ct = ct.replace(/\n/g," <br>");
+    ct = ct.replace(/\n/g," <br>");
 
-      while(m=re.exec(ct)) {
-        k = m[0].replace(/_/g,"");
-	k = "<i>" + k + "</i>";
-	ct = ct.replace(m[0],k);
-      }
+    while(m=re.exec(ct)) {
+      k = m[0].replace(/_/g,"");
+      k = "<i>" + k + "</i>";
+      ct = ct.replace(m[0],k);
+    }
     return ct
   }
 
@@ -74,31 +78,31 @@ $j(function(){
       if($j('#sortable > dl > input')[i]){
         xcvalue = $j('#sortable > dl > input')[i].value;
       } else {
-	xcvalue = 'na';
+        xcvalue = 'na';
       }
 
       if (xcvalue != input_lines[i]) {
-	if (input_lines[i].length == 0) {
-	  if($j('#sortable > dl')[i]){
-	    el = $j('#sortable > dl > dt')[i];
-	    $j(el).text('');
-	    $j(el).append('<hr />');
-	    el = $j('#sortable > dl > dd')[i];
-	    $j(el).text('');
-	  }
-	}
-	if (xcvalue == 'na') {
-	  $j('#sortable').append('<dl id="x'+i+'"><input type="hidden" id="xc'+i+'" class="xc" value="' + input_lines[i] + '"><dt id="citation_citation_'+i+'"><hr /></dt><dd id="citation_text_'+i+'"></dd> </dl>');
-	}
+        if (input_lines[i].length == 0) {
+          if($j('#sortable > dl')[i]){
+            el = $j('#sortable > dl > dt')[i];
+            $j(el).text('');
+            $j(el).append('<hr />');
+            el = $j('#sortable > dl > dd')[i];
+            $j(el).text('');
+          }
+        }
+        if (xcvalue == 'na') {
+          $j('#sortable').append('<dl id="x'+i+'"><input type="hidden" id="xc'+i+'" class="xc" value="' + input_lines[i] + '"><dt id="citation_citation_'+i+'"><hr /></dt><dd id="citation_text_'+i+'"></dd> </dl>');
+        }
 
-	$j(xc).val(input_lines[i]);
-	reload_citation(i);
+        $j(xc).val(input_lines[i]);
+        reload_citation(i);
       }
     }
     var i=1;
     $j('#sortable > dl').each(function () {
       if (i>input_lines.length) {
-	$j(this).remove();
+        $j(this).remove();
       }
       i++;
 
@@ -116,23 +120,21 @@ $j(function(){
     citation = new Citation(cit);
     citation.ready(function(){
 
-    citation.citation = detect_book(cit).book + ' ' + citation.citation
+      citation.citation = detect_book(cit).book + ' ' + citation.citation
 
-    $j('#citation_citation_'+cl).text(citation.citation);
-    formatted_citation = format_citation(citation.text);
-    $j('#citation_text_'+cl).html(formatted_citation);
-    $j('#tooltip').text("Done, hit enter for the next one...");
-    scroll_preview();
+      $j('#citation_citation_'+cl).text(citation.citation);
+      formatted_citation = format_citation(citation.text);
+      $j('#citation_text_'+cl).html(formatted_citation);
+      $j('#tooltip').text("Done, hit enter for the next one...");
+      scroll_preview();
+
+      set_url();
     });
 
   }
 
   $j('#citations').change(update_preview);
   $j('#citations').keyup(update_preview);
-
-  $j('#citation_form').submit(function() {
-    $j('#rendered_citations').val($j('#sortable').html());
-  });
 
   update_preview();
   //console.log('just loaded citations');
@@ -141,13 +143,17 @@ $j(function(){
   //$j('#page').html($j('#takeover').html());
 
 
-$j( document ).ready(function() {
-  $j('#citations').focus();
-  if ($j('#citations').val() == "") {
-    $j('#citations').val("Mat 10:8 freely");
-  }
-  update_preview();
-});
+  $j( document ).ready(function() {
+    $j('#citations').focus();
+
+    $j('#citations').val(
+      LZString.decompress(document.location.hash.substr(1))
+    );
+    if ($j('#citations').val() == "") {
+      $j('#citations').val("Mat 10:8 freely");
+    }
+    update_preview();
+  });
 
 });
 
