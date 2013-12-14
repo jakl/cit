@@ -3,3 +3,10 @@
   border-color: #888;
   border-width: 1px;
 }
+.full-height {
+  height: 100%;
+}
+.full-grown {
+  height: 100%;
+  width: 100%;
+}
