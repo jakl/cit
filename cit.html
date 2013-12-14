@@ -5,28 +5,27 @@
 
   <link href="cit.css" rel="stylesheet">
   <script type='text/javascript' src='cit.js'></script>
-  <script type="text/javascript">
-    var title_placeholder = "New Inspiration";
-  </script>
 </head>
 
 <body>
-  <div id="takeover">
-    <input type="hidden" id="rendered_citations" name="rendered_citations" value="" />
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-5 border">
+        <div class="citation-wrap">
+          <strong>Citations</strong>
+          <span id="detected_book">Book</span>
+          <br />
+          <span id="tooltip">Type your citation and hit <b>enter</b>...</span><br />
+          <textarea name="post_citations" id="citations" rows="16" cols="30"></textarea>
+        </div>
+      </div>
 
-    <div class="citation-wrap">
-      <strong>Citations</strong>
-      <span id="detected_book">Book</span>
-      <br />
-      <span id="tooltip">Type your citation and hit <b>enter</b>...</span><br />
-      <textarea name="post_citations" id="citations" rows="16" cols="30"></textarea>
-      <input type="submit" name="submit" value="Save / Share" class="btn btn-primary" />
+      <div class="col-xs-5 col-xs-offset-2 border">
+        <div class="preview-wrap">
+          <strong>Preview</strong><br />
+          <div id="sortable" contenteditable="true"></div>
+        </div>
+      </div>
     </div>
-
-    <div class="preview-wrap">
-      <strong>Preview</strong><br />
-      <div id="sortable" contenteditable="true"></div>
-    </div>
-
   </div>
 </body>
