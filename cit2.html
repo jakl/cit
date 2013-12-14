@@ -1,44 +1,32 @@
-<html class="no-js" lang="en-US" xmlns:og="http://ogp.me/ns#">
 <head>
-<script type='text/javascript' src='http://pleasantviewer.org/wp-includes/js/jquery/jquery.js?ver=1.10.2'></script>
-<script type='text/javascript' src='http://pleasantviewer.org/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>
-<script type='text/javascript' src='http://pleasantviewer.org/wp-includes/js/comment-reply.min.js?ver=3.8'></script>
-<script type='text/javascript' src='cit2.js'></script>
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  <script type='text/javascript' src='//code.jquery.com/jquery-2.0.3.min.js'></script>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 
-		<script type="text/javascript">
-		var title_placeholder = "New Inspiration";
-		var description_placeholder = "Add an introduction or description for these citations...";
-	</script>
+  <link href="cit2.css" rel="stylesheet">
+  <script type='text/javascript' src='cit2.js'></script>
+  <script type="text/javascript">
+    var title_placeholder = "New Inspiration";
+  </script>
+</head>
 
-<body class="home page page-id-7 page-template-default logged-in custom-background">
-		    <div id="takeover">
-<div class="btn"></div>
-	<form action="/" id="citation_form" method="post" enctype="multipart/form-data">
-		<input type="hidden" id="rendered_citations" name="rendered_citations" value="" />
+<body>
+  <div id="takeover">
+    <input type="hidden" id="rendered_citations" name="rendered_citations" value="" />
 
-		<div style="width: 30%; float: left;">
-			<input type="text" id="name" name="post_topic" size="60" style="width: 80%; border-radius: 5px; margin: 5px;font-size:20px;cursor:pointer;" value="" /><br>
-			<select name="post_category_id" style="margin: 5px; margin-left: 15px;"><option value="19261">Benedictions</option><option value="19262">Bible Lessons</option><option value="4">Healings</option><option value="71" selected="selected" >Inspiration</option><option value="19260">Sunday Readings</option><option value="12493">Wednesday Readings</option></select>
-		</div>
+    <div class="citation-wrap">
+      <strong>Citations</strong>
+      <span id="detected_book">Book</span>
+      <br />
+      <span id="tooltip">Type your citation and hit <b>enter</b>...</span><br />
+      <textarea name="post_citations" id="citations" rows="16" cols="30"></textarea>
+      <input type="submit" name="submit" value="Save / Share" class="btn btn-primary" />
+    </div>
 
-		<div style="float: left; width: 60%;">
-			<textarea id="description" name="post_introduction" rows="3" cols="20" style="border-radius: 5px; width: 80%;font-size:12px;color:grey;"></textarea>
-		</div>
+    <div class="preview-wrap">
+      <strong>Preview</strong><br />
+      <div id="sortable" contenteditable="true"></div>
+    </div>
 
-		<div style="clear: both; width: 30%; float: left; margin-top: 30px; overflow:auto;">
-			<strong>Citations</strong><span id="detected_book">Book</span><br /><span id="tooltip">Type your citation and hit <b>enter</b>...</span><br />
-			<textarea name="post_citations" id="citations" style="border-radius: 5px;" rows="16" cols="30"></textarea>
-			<input style="clear: both;" type="submit" name="submit" value="Save / Share" class="btn btn-primary" />
-		</div>
-
-		<div style="width: 70%; float: right; margin-top: 30px;">
-			<strong>Preview</strong><br />
-			<div id="sortable" style="height: 500px;overflow: auto; border-radius: 5px; border: 1px solid #eee;" contenteditable="true"></div>
-		</div>
-
-	</form>
-</div>
-
+  </div>
 </body>
-</html>
